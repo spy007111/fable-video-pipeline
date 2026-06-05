@@ -1,0 +1,10 @@
+*
+!SKILL.md
+!.gitignore
+!README.md
+!PIPELINE.md
+!LICENSE
+!.env.example
+!examples/
+!references/
+!scripts/
