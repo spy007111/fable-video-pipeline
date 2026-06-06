@@ -206,29 +206,68 @@ subprocess.run([
 ```python
 FONT = "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc"
 
-def render_subtitles(clip_path, cn_text, en_text, clip_sub_path):
-    # 转义：单引号、反斜杠（通过 subprocess 列表传参，不进 shell）
-    cn_esc = cn_text.replace("\\", "\\\\").replace("'", "\\'")
-    en_esc = en_text.replace("\\", "\\\\").replace("'", "\\'")
+def auto_wrap_en(text, max_chars=40):
+    """英文长句按 max_chars 自动拆成两行（在空格处断句）"""
+    if len(text) <= max_chars:
+        return [text]
+    split_idx = text.rfind(' ', max_chars, min(max_chars + 15, len(text)))
+    if split_idx == -1:
+        split_idx = text.rfind(' ', max_chars // 2, max_chars)
+    if split_idx == -1:
+        split_idx = max_chars
+    return [text[:split_idx].strip(), text[split_idx:].strip()]
 
-    filter_str = (
-        f"drawtext=text='{cn_esc}':fontsize=42:fontcolor=0xFFFF00:"
-        f"x=(w-text_w)/2:y=h-115:fontfile={FONT}:"
-        f"borderw=2:bordercolor=black@0.9:"
-        f"shadowcolor=black:shadowx=2:shadowy=2,"
-        f"drawtext=text='{en_esc}':fontsize=30:fontcolor=0xFFFFFF:"
-        f"x=(w-text_w)/2:y=h-70:fontfile={FONT}:"
-        f"borderw=1:bordercolor=black@0.7:"
-        f"shadowcolor=black:shadowx=1:shadowy=1"
-    )
+def render_subtitle_bilingual(clip_path, cn_text, en_text, output_path):
+    en_lines = auto_wrap_en(en_text, 40)
+    en1 = en_lines[0]
+    en2 = en_lines[1] if len(en_lines) == 2 else ""
+
+    cn_file = tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False, encoding="utf-8")
+    cn_file.write(cn_text); cn_file.close()
+
+    en1_file = tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False, encoding="utf-8")
+    en1_file.write(en1); en1_file.close()
+
+    en2_file = None
+    if en2:
+        en2_file = tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False, encoding="utf-8")
+        en2_file.write(en2); en2_file.close()
+
+    if en2:
+        # 英文两行：line1=y=h-90, line2=y=h-55，fontsize=28
+        f_str = (
+            f"drawtext=textfile='{cn_file.name}':fontsize=42:fontcolor=0xFFFF00:"
+            f"x=(w-text_w)/2:y=h-115:fontfile={FONT}:"
+            f"borderw=2:bordercolor=black@0.9:shadowcolor=black:shadowx=2:shadowy=2,"
+            f"drawtext=textfile='{en1_file.name}':fontsize=28:fontcolor=0xFFFFFF:"
+            f"x=(w-text_w)/2:y=h-90:fontfile={FONT}:"
+            f"borderw=1:bordercolor=black@0.7,"
+            f"drawtext=textfile='{en2_file.name}':fontsize=28:fontcolor=0xFFFFFF:"
+            f"x=(w-text_w)/2:y=h-55:fontfile={FONT}:"
+            f"borderw=1:bordercolor=black@0.7"
+        )
+    else:
+        # 英文一行：y=h-70
+        f_str = (
+            f"drawtext=textfile='{cn_file.name}':fontsize=42:fontcolor=0xFFFF00:"
+            f"x=(w-text_w)/2:y=h-115:fontfile={FONT}:"
+            f"borderw=2:bordercolor=black@0.9:shadowcolor=black:shadowx=2:shadowy=2,"
+            f"drawtext=textfile='{en1_file.name}':fontsize=30:fontcolor=0xFFFFFF:"
+            f"x=(w-text_w)/2:y=h-70:fontfile={FONT}:"
+            f"borderw=1:bordercolor=black@0.7"
+        )
 
     r = subprocess.run([
         "ffmpeg", "-y", "-i", clip_path,
-        "-vf", filter_str,
+        "-vf", f_str,
         "-c:a", "aac", "-b:a", "192k",
         "-c:v", "libx264", "-preset", "medium", "-crf", "23",
-        clip_sub_path
+        output_path
     ], capture_output=True, text=True)
+
+    os.unlink(cn_file.name); os.unlink(en1_file.name)
+    if en2_file:
+        os.unlink(en2_file.name)
 
     if r.returncode != 0:
         print(f"  ❌ {r.stderr[-200:]}")
@@ -236,7 +275,15 @@ def render_subtitles(clip_path, cn_text, en_text, clip_sub_path):
     return True
 ```
 
-### 方案 B（更可靠）：`textfile=` 参数
+**关键参数**：
+- 英文字幕 **28px**（双行比单行小，确保两行都能完整显示）
+- 英文行1：`y=h-90`；英文行2：`y=h-55`
+- 中文单行：`y=h-115`，fontsize=42
+- `auto_wrap_en` 断句优先在空格处，max_chars=40
+
+---
+
+### 方案 B（备选）：直接用 textfile=（仅短句）
 
 将字幕文本写入临时文件，FFmpeg 从文件读取，彻底绕过 shell 引号问题：
 
@@ -274,14 +321,15 @@ os.unlink(en_file.name)
 |------|-----|
 | 中文字幕颜色 | `0xFFFF00`（亮黄） |
 | 英文字幕颜色 | `0xFFFFFF`（纯白） |
-| 中文字幕位置 | `y=h-115` |
-| 英文字幕位置 | `y=h-70` |
+| 中文字幕位置 | `y=h-115`（单行） |
+| 英文字幕位置 | 行1 `y=h-90`，行2 `y=h-55`（双行自适应） |
 | 中文字幕字号 | `42` |
-| 英文字幕字号 | `30` |
+| 英文字幕字号 | `28`（双行时缩小保证容纳） |
 | 中文字幕描边 | `borderw=2:bordercolor=black@0.9` |
 | 英文字幕描边 | `borderw=1:bordercolor=black@0.7` |
 | 字体 | `NotoSansCJK-Regular.ttc` |
-| 字幕行 | 单行，无 `\n`，带标点 |
+| 英文换行 | `auto_wrap_en(text, max_chars=40)` 自动拆两行 |
+| 断句原则 | 优先在空格处截断，保留完整单词 |
 
 ---
 
@@ -426,6 +474,7 @@ vf = (
 | **音频与字幕不一致** | 字幕用了手动改写版本 | 字幕严格使用 `voiceover_script` 英文原文 + `story_script` 的 `narration_cn` |
 | **字幕显示为空白** | `didn't` 等撇号导致 filtergraph 静默失败 | 用 `subprocess` 列表传参，`replace("'", "\\'")` 转义单引号 |
 | **片段时长不对** | 用估算值而非实测值 | 每片段 `-t` = `ffprobe -i audio_xxx.mp3 -show_entries format=duration -v quiet -of csv=p=0` |
+| **英文字幕截断** | 句子太长单行放不下 | 用 `auto_wrap_en(text, max_chars=40)` 自动拆两行，英文字号改 28px，line1=y=h-90, line2=y=h-55 |
 | **中文字幕颜色太淡** | 浅灰/浅黄色 | 改用 `0xFFFF00` 亮黄 |
 | **英文字幕颜色太淡** | 灰色 | 改用 `0xFFFFFF` 纯白 |
 | **英文字幕为空** | 取错了字段 | 英文字幕来源是 `voiceover_script.json` 的 `text`，不是 `story_script.json` |
