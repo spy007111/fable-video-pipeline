@@ -2,6 +2,7 @@
 build/
 dist/
 # Note: examples/output/*.mp4 are tracked via Git LFS (see .gitattributes)
+# Note: examples/output/thumbnails/*.jpg are tracked normally for README previews
 *.mp4
 *.mp3
 *.png
@@ -11,6 +12,7 @@ dist/
 *.webp
 .ass
 .srt
+!examples/output/thumbnails/*.jpg
 
 # Python
 __pycache__/

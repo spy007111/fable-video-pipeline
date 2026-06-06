@@ -43,7 +43,9 @@ bash scripts/run_pipeline.sh <故事名> examples/voiceover_script.json
 
 ### 晏子使楚（已验证）
 
-<video src="https://github.com/spy007111/fable-video-pipeline/raw/main/examples/output/yanzi_shi_chu_final_v4.mp4" controls width="100%"></video>
+<a href="https://github.com/spy007111/fable-video-pipeline/raw/main/examples/output/yanzi_shi_chu_final_v4.mp4">
+  <img src="https://github.com/spy007111/fable-video-pipeline/raw/main/examples/output/thumbnails/yanzi_shi_chu_thumb.jpg" alt="晏子使楚 预览" width="640">
+</a>
 
 | 项目 | 详情 |
 |------|------|
@@ -59,7 +61,9 @@ bash scripts/run_pipeline.sh <故事名> examples/voiceover_script.json
 
 ### 滥竽充数（已验证）
 
-<video src="https://github.com/spy007111/fable-video-pipeline/raw/main/examples/output/lan-yu-chong-shu_final_v4.mp4" controls width="100%"></video>
+<a href="https://github.com/spy007111/fable-video-pipeline/raw/main/examples/output/lan-yu-chong-shu_final_v4.mp4">
+  <img src="https://github.com/spy007111/fable-video-pipeline/raw/main/examples/output/thumbnails/lan-yu-chong-shu_thumb.jpg" alt="滥竽充数 预览" width="640">
+</a>
 
 | 项目 | 详情 |
 |------|------|
@@ -75,7 +79,9 @@ bash scripts/run_pipeline.sh <故事名> examples/voiceover_script.json
 
 ### 疑心生鬼 v8（已验证）
 
-<video src="https://github.com/spy007111/fable-video-pipeline/raw/main/examples/output/yi-xin-sheng-gui_final_v8.mp4" controls width="100%"></video>
+<a href="https://github.com/spy007111/fable-video-pipeline/raw/main/examples/output/yi-xin-sheng-gui_final_v8.mp4">
+  <img src="https://github.com/spy007111/fable-video-pipeline/raw/main/examples/output/thumbnails/yi-xin-sheng-gui_thumb.jpg" alt="疑心生鬼 预览" width="640">
+</a>
 
 | 项目 | 详情 |
 |------|------|
