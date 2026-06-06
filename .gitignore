@@ -1,10 +1,55 @@
-*
-!SKILL.md
-!.gitignore
+# Build & output artifacts
+build/
+dist/
+*.mp4
+*.mp3
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+.ass
+.srt
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+
+# Sensitive / secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+credentials.json
+token.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Logs & local state
+*.log
+*.tmp
+*.pid
+
+# Keep source & docs
 !README.md
 !PIPELINE.md
 !LICENSE
+!SKILL.md
+!scripts/**
+!src/**
+!examples/**
+!references/**
+!docs/**
+!tests/**
+!assets/**
+!templates/**
 !.env.example
-!examples/
-!references/
-!scripts/

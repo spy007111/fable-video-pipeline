@@ -1,0 +1,44 @@
+[
+  {
+    "id": "title",
+    "cn": "亡羊补牢",
+    "en": "Mending the fold after the sheep is lost",
+    "dur_est": 5
+  },
+  {
+    "id": "scene_1",
+    "cn": "从前有一个牧羊人，每天赶着羊群上山。",
+    "en": "Once upon a time, there was a shepherd who drove his sheep up the mountain every day.",
+    "dur_est": 7
+  },
+  {
+    "id": "scene_2",
+    "cn": "一天，他发现羊圈破了一个洞。",
+    "en": "One day, he found a hole in the sheep pen.",
+    "dur_est": 5
+  },
+  {
+    "id": "scene_3",
+    "cn": "他心想：羊还没丢，补它干嘛？于是转身离开。",
+    "en": "He thought: The sheep are not lost yet, why fix it? So he turned and left.",
+    "dur_est": 8
+  },
+  {
+    "id": "scene_4",
+    "cn": "第二天，他发现少了一只羊。原来狼从破洞钻进来叼走了它。",
+    "en": "The next day, he found one sheep missing. A wolf had snuck through the hole and taken it.",
+    "dur_est": 8
+  },
+  {
+    "id": "scene_5",
+    "cn": "牧羊人立刻修补了羊圈，从此羊再也没有丢过。",
+    "en": "The shepherd promptly repaired the pen, and from then on, his sheep were never lost again.",
+    "dur_est": 7
+  },
+  {
+    "id": "moral",
+    "cn": "这个故事告诉我们：出了问题及时补救，还不算晚。",
+    "en": "This story teaches us: When problems arise, fixing them promptly is never too late.",
+    "dur_est": 8
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "title": "寓言故事标题",
+  "scenes": [
+    {
+      "scene": 1,
+      "description": "场景 1 的简短描述",
+      "prompt": "AI 图像生成提示词（英文）",
+      "elements": ["元素 1", "元素 2"],
+      "duration": 5
+    },
+    {
+      "scene": 2,
+      "description": "场景 2 的简短描述",
+      "prompt": "AI 图像生成提示词（英文）",
+      "elements": ["元素 1", "元素 2"],
+      "duration": 5
+    }
+  ],
+  "metadata": {
+    "style": "水墨/现代/奇幻",
+    "aspect_ratio": "16:9",
+    "subtitle_language": "zh-CN + en-US",
+    "voice": "en-US-GuyNeural"
+  }
+}

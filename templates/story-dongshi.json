@@ -1,0 +1,47 @@
+{
+  "title": "东施效颦",
+  "scenes": [
+    {
+      "scene": 1,
+      "description": "春秋时期越国美女西施",
+      "prompt": "Ancient Chinese village at dawn, a beautiful woman named Xishi walking gracefully by the river, traditional ink painting style, soft morning light, serene atmosphere",
+      "elements": ["Xishi", "dawn", "village", "river", "ancient China", "beauty"],
+      "duration": 5
+    },
+    {
+      "scene": 2,
+      "description": "西施心痛，皱眉捂胸",
+      "prompt": "Xishi suffering from heart pain, pressing her chest with both hands, furrowed brow, yet still breathtakingly beautiful, traditional Chinese ink painting, emotional expression",
+      "elements": ["Xishi", "heart pain", "beautiful suffering", "furrowed brow"],
+      "duration": 8
+    },
+    {
+      "scene": 3,
+      "description": "东施在暗处观察",
+      "prompt": "An ugly girl named Dongshi hiding behind a tree, watching Xishi from the shadows, envious expression, traditional Chinese ink painting, contrast between light and dark",
+      "elements": ["Dongshi", "hiding", "envious", "shadow", "contrast"],
+      "duration": 6
+    },
+    {
+      "scene": 4,
+      "description": "东施模仿西施",
+      "prompt": "Dongshi imitating Xishi, pressing her chest with both hands, furrowing her brow, walking through the village, but looking grotesque and unnatural, traditional Chinese ink painting, comedic tone",
+      "elements": ["Dongshi", "imitation", "grotesque", "unnatural", "village"],
+      "duration": 7
+    },
+    {
+      "scene": 5,
+      "description": "村民惊恐躲避",
+      "prompt": "Villagers looking at Dongshi with fear and disgust, running away in terror, children crying, traditional Chinese ink painting, dramatic reaction",
+      "elements": ["villagers", "fear", "running away", "disgust", "children crying"],
+      "duration": 8
+    },
+    {
+      "scene": 6,
+      "description": "寓言寓意总结",
+      "prompt": "Moral of the story: blind imitation without self-awareness only makes things worse, traditional Chinese calligraphy style, wisdom text, serene background",
+      "elements": ["moral", "wisdom", "calligraphy", "self-awareness"],
+      "duration": 6
+    }
+  ]
+}
