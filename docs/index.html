@@ -3,34 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fable Video Pipeline - 寓言视频展示</title>
+<title>寓言视频展示 — Fable Video Pipeline</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     background: #0f1117;
     color: #e6e6e6;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
     min-height: 100vh;
     padding: 40px 20px;
   }
-  h1 {
-    text-align: center;
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: #fff;
-  }
-  .subtitle {
-    text-align: center;
-    color: #888;
-    font-size: 14px;
-    margin-bottom: 40px;
-  }
+  h1 { text-align: center; font-size: 28px; font-weight: 700; margin-bottom: 6px; color: #fff; }
+  .subtitle { text-align: center; color: #888; font-size: 14px; margin-bottom: 36px; }
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
     gap: 28px;
-    max-width: 1200px;
+    max-width: 1260px;
     margin: 0 auto;
   }
   .card {
@@ -41,52 +30,92 @@
     box-shadow: 0 4px 24px rgba(0,0,0,.4);
     transition: transform .2s, box-shadow .2s;
   }
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 40px rgba(0,0,0,.5);
-  }
-  .card video {
-    width: 100%;
+  .card:hover { transform: translateY(-4px); box-shadow: 0 10px 40px rgba(0,0,0,.5); }
+
+  /* 视频播放器容器 */
+  .video-wrap {
+    position: relative;
     aspect-ratio: 16/9;
     background: #000;
-    display: block;
-    object-fit: cover;
+    cursor: pointer;
+    overflow: hidden;
   }
+  .video-wrap video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  /* 封面图 */
+  .video-wrap .poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transition: opacity .3s;
+  }
+  .video-wrap.playing .poster { opacity: 0; pointer-events: none; }
+  /* 播放按钮 */
+  .play-btn {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    background: rgba(0,0,0,.3);
+    transition: background .2s;
+  }
+  .play-btn svg { width: 60px; height: 60px; filter: drop-shadow(0 2px 8px rgba(0,0,0,.5)); }
+  .video-wrap:hover .play-btn { background: rgba(0,0,0,.15); }
+  .video-wrap.playing .play-btn { display: none; }
+  /* 进度条 */
+  .video-wrap video::-webkit-media-controls { display: none; }
+
   .card-body { padding: 18px 20px 20px; }
-  .card-title { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 4px; }
-  .card-en   { font-size: 13px; color: #888; margin-bottom: 14px; }
+  .card-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+  .card-en   { font-size: 12px; color: #666; margin-bottom: 14px; font-style: italic; }
   .card-meta {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6px 12px;
+    gap: 6px 16px;
     font-size: 12px;
     color: #aaa;
   }
   .card-meta span { display: flex; flex-direction: column; }
   .card-meta .label { color: #555; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; }
-  footer {
-    text-align: center;
-    margin-top: 48px;
-    font-size: 12px;
-    color: #444;
-  }
+
+  footer { text-align: center; margin-top: 52px; font-size: 12px; color: #444; }
   footer a { color: #555; text-decoration: none; }
   footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 480px) {
+    .grid { grid-template-columns: 1fr; }
+    h1 { font-size: 22px; }
+  }
 </style>
 </head>
 <body>
 
 <h1>📺 寓言视频展示</h1>
-<p class="subtitle">Fable Video Pipeline · 3 个已验证成片</p>
+<p class="subtitle">Fable Video Pipeline · 3 个已验证成片（16:9 横屏）</p>
 
 <div class="grid">
 
   <!-- 晏子使楚 -->
   <div class="card">
-    <video controls poster="https://github.com/spy007111/fable-video-pipeline/raw/main/examples/output/thumbnails/yanzi_shi_chu_thumb.jpg">
-      <source src="https://github.com/spy007111/fable-video-pipeline/releases/download/yanzi-shi-chu-v4/yanzi_shi_chu_final_v4.mp4" type="video/mp4">
-      您的浏览器不支持视频播放。
-    </video>
+    <div class="video-wrap" onclick="play(this, 'v1')">
+      <video id="v1" src="https://spy007111.github.io/fable-video-pipeline/yanzi_shi_chu_final_v4.mp4" preload="none"></video>
+      <img class="poster" src="https://spy007111.github.io/fable-video-pipeline/yanzi_shi_chu_thumb.jpg" alt="晏子使楚 缩略图" onerror="this.style.display='none'">
+      <div class="play-btn">
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="30" r="30" fill="rgba(255,255,255,0.9)"/>
+          <polygon points="24,18 48,30 24,42" fill="#1a1d27"/>
+        </svg>
+      </div>
+    </div>
     <div class="card-body">
       <div class="card-title">晏子使楚</div>
       <div class="card-en">Yanzi Debates with the Envoys of Chu</div>
@@ -94,17 +123,23 @@
         <span><span class="label">时长</span>94s</span>
         <span><span class="label">分辨率</span>1920×1080</span>
         <span><span class="label">大小</span>7.2 MB</span>
-        <span><span class="label">验证</span>v4 · ASS+drawtext</span>
+        <span><span class="label">版本</span>v4 · ASS+drawtext</span>
       </div>
     </div>
   </div>
 
   <!-- 滥竽充数 -->
   <div class="card">
-    <video controls poster="https://github.com/spy007111/fable-video-pipeline/raw/main/examples/output/thumbnails/lan-yu-chong-shu_thumb.jpg">
-      <source src="https://github.com/spy007111/fable-video-pipeline/releases/download/lan-yu-chong-shu-v4/lan-yu-chong-shu_final_v4.mp4" type="video/mp4">
-      您的浏览器不支持视频播放。
-    </video>
+    <div class="video-wrap" onclick="play(this, 'v2')">
+      <video id="v2" src="https://spy007111.github.io/fable-video-pipeline/lan-yu-chong-shu_final_v4.mp4" preload="none"></video>
+      <img class="poster" src="https://spy007111.github.io/fable-video-pipeline/lan-yu-chong-shu_thumb.jpg" alt="滥竽充数 缩略图" onerror="this.style.display='none'">
+      <div class="play-btn">
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="30" r="30" fill="rgba(255,255,255,0.9)"/>
+          <polygon points="24,18 48,30 24,42" fill="#1a1d27"/>
+        </svg>
+      </div>
+    </div>
     <div class="card-body">
       <div class="card-title">滥竽充数</div>
       <div class="card-en">The Unskilled Musician in the King's Band</div>
@@ -112,17 +147,23 @@
         <span><span class="label">时长</span>46.3s</span>
         <span><span class="label">分辨率</span>1920×1080</span>
         <span><span class="label">大小</span>2.49 MB</span>
-        <span><span class="label">验证</span>v4 · 多角色稳定</span>
+        <span><span class="label">版本</span>v4 · 多角色</span>
       </div>
     </div>
   </div>
 
   <!-- 疑心生鬼 v8 -->
   <div class="card">
-    <video controls poster="https://github.com/spy007111/fable-video-pipeline/raw/main/examples/output/thumbnails/yi-xin-sheng-gui_thumb.jpg">
-      <source src="https://github.com/spy007111/fable-video-pipeline/releases/download/yi-xin-sheng-gui-v8/yi-xin-sheng-gui_final_v8.mp4" type="video/mp4">
-      您的浏览器不支持视频播放。
-    </video>
+    <div class="video-wrap" onclick="play(this, 'v3')">
+      <video id="v3" src="https://spy007111.github.io/fable-video-pipeline/yi-xin-sheng-gui_final_v8.mp4" preload="none"></video>
+      <img class="poster" src="https://spy007111.github.io/fable-video-pipeline/yi-xin-sheng-gui_thumb.jpg" alt="疑心生鬼 缩略图" onerror="this.style.display='none'">
+      <div class="play-btn">
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="30" r="30" fill="rgba(255,255,255,0.9)"/>
+          <polygon points="24,18 48,30 24,42" fill="#1a1d27"/>
+        </svg>
+      </div>
+    </div>
     <div class="card-body">
       <div class="card-title">疑心生鬼</div>
       <div class="card-en">Fear Creates Its Own Monsters</div>
@@ -130,12 +171,31 @@
         <span><span class="label">时长</span>54.5s</span>
         <span><span class="label">分辨率</span>1920×1080</span>
         <span><span class="label">大小</span>2.24 MB</span>
-        <span><span class="label">验证</span>v8 · drawtext 直出</span>
+        <span><span class="label">版本</span>v8 · drawtext</span>
       </div>
     </div>
   </div>
 
 </div>
+
+<script>
+  function play(wrapper, id) {
+    const video = document.getElementById(id);
+    if (video.paused) {
+      video.play();
+      wrapper.classList.add('playing');
+    } else {
+      video.pause();
+      wrapper.classList.remove('playing');
+    }
+  }
+  // 点击视频本身也可暂停
+  document.querySelectorAll('video').forEach(v => {
+    v.addEventListener('click', () => {
+      if (!v.paused) { v.pause(); v.parentElement.classList.remove('playing'); }
+    });
+  });
+</script>
 
 <footer>
   由 <a href="https://github.com/spy007111/fable-video-pipeline">Fable Video Pipeline</a> 自动生成 · 双语字幕 · SenseNova + Edge-TTS

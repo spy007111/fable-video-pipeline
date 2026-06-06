@@ -37,26 +37,25 @@ bash scripts/run_pipeline.sh <故事名> examples/voiceover_script.json
 - 时长：60–180s 自适应
 - 典型大小：3–10 MB / 分钟
 
+## 在线演示
+
+👉 **直接播放所有视频：https://spy007111.github.io/fable-video-pipeline/**
+
+（点击卡片中的播放按钮即可观看，无需跳转）
+
 ## 成功案例
 
-### 竖屏 9:16
+### 横屏 16:9
 
-<table>
-<thead>
-<tr>
-<th align="center">▶️ 晏子使楚</th>
-<th align="center">▶️ 滥竽充数</th>
-<th align="center">▶️ 疑心生鬼 v8</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center"><video src="https://spy007111.github.io/fable-video-pipeline/yanzi_shi_chu_final_v4.mp4" controls="" style="width:100%;max-width:400px;border-radius:8px;"></video></td>
-<td align="center"><video src="https://spy007111.github.io/fable-video-pipeline/lan-yu-chong-shu_final_v4.mp4" controls="" style="width:100%;max-width:320px;border-radius:8px;"></video></td>
-<td align="center"><video src="https://spy007111.github.io/fable-video-pipeline/yi-xin-sheng-gui_final_v8.mp4" controls="" style="width:100%;max-width:320px;border-radius:8px;"></video></td>
-</tr>
-</tbody>
-</table>
+<a href="https://spy007111.github.io/fable-video-pipeline/">
+  <img src="https://spy007111.github.io/fable-video-pipeline/yanzi_shi_chu_thumb.jpg" alt="晏子使楚" width="360" style="border-radius:8px; margin:4px;">
+</a>
+<a href="https://spy007111.github.io/fable-video-pipeline/">
+  <img src="https://spy007111.github.io/fable-video-pipeline/lan-yu-chong-shu_thumb.jpg" alt="滥竽充数" width="360" style="border-radius:8px; margin:4px;">
+</a>
+<a href="https://spy007111.github.io/fable-video-pipeline/">
+  <img src="https://spy007111.github.io/fable-video-pipeline/yi-xin-sheng-gui_thumb.jpg" alt="疑心生鬼 v8" width="360" style="border-radius:8px; margin:4px;">
+</a>
 
 | 项目 | 晏子使楚 | 滥竽充数 | 疑心生鬼 v8 |
 |------|---------|---------|-------------|
@@ -74,8 +73,8 @@ fable-video-pipeline/
 ├── PIPELINE.md
 ├── LICENSE
 ├── .env.example
+├── docs/                  ← 在线演示页（含视频）
 ├── examples/
-│   ├── voiceover_script.json
 │   └── output/           ← 视频成品
 ├── scripts/
 │   ├── run_pipeline.sh
@@ -83,18 +82,10 @@ fable-video-pipeline/
 │   ├── 04_generate_audio.py
 │   ├── 05_generate_subtitles.py
 │   └── 06_compose_video.py
-├── src/
-│   └── config/
-│       └── settings.py
-└── references/
-    └── ...
+└── src/
+    └── config/
+        └── settings.py
 ```
-
-## 在线演示
-
-如需更好的播放体验，可访问 **GitHub Pages 演示页**：
-
-https://spy007111.github.io/fable-video-pipeline/
 
 ## 贡献
 
