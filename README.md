@@ -51,9 +51,9 @@ bash scripts/run_pipeline.sh <故事名> examples/voiceover_script.json
 </thead>
 <tbody>
 <tr>
-<td align="center"><video src="https://media.githubusercontent.com/media/spy007111/fable-video-pipeline/main/examples/output/yanzi_shi_chu_final_v4.mp4" controls="" style="width:100%;max-width:320px;border-radius:8px;"></video></td>
-<td align="center"><video src="https://media.githubusercontent.com/media/spy007111/fable-video-pipeline/main/examples/output/lan-yu-chong-shu_final_v4.mp4" controls="" style="width:100%;max-width:320px;border-radius:8px;"></video></td>
-<td align="center"><video src="https://media.githubusercontent.com/media/spy007111/fable-video-pipeline/main/examples/output/yi-xin-sheng-gui_final_v8.mp4" controls="" style="width:100%;max-width:320px;border-radius:8px;"></video></td>
+<td align="center"><video src="https://spy007111.github.io/fable-video-pipeline/yanzi_shi_chu_final_v4.mp4" controls="" style="width:100%;max-width:400px;border-radius:8px;"></video></td>
+<td align="center"><video src="https://spy007111.github.io/fable-video-pipeline/lan-yu-chong-shu_final_v4.mp4" controls="" style="width:100%;max-width:320px;border-radius:8px;"></video></td>
+<td align="center"><video src="https://spy007111.github.io/fable-video-pipeline/yi-xin-sheng-gui_final_v8.mp4" controls="" style="width:100%;max-width:320px;border-radius:8px;"></video></td>
 </tr>
 </tbody>
 </table>
