@@ -458,6 +458,24 @@ vf = (
 | 图片尺寸 | **2752x1536**（SenseNova 2K） |
 | 配音 | Edge-TTS en-US-GuyNeural（默认）|
 
+## TTS 发音避坑：撇号导致 "ord" 错误（必须）
+
+Edge-TTS 对英文撇号 `'s` / `n't` 有已知 bug：会把 `didn't` 读成 "didn ord"，`wouldn't` 读成 "wouldn ord"。
+
+**必须用完整单词替代所有撇号**：
+
+| ❌ 错误 | ✅ 正确 |
+|---------|---------|
+| `didn't` | `did not` |
+| `wouldn't` | `would not` |
+| `couldn't` | `could not` |
+| `can't` | `cannot` |
+| `I've` | `I have` |
+| `that's` | `that is` |
+| `it's` | `it is` |
+
+**在 `voiceover_script.json` 中每句都检查**，确保没有撇号后再送入 edge-tts。
+
 ## 配音声音选择指南（v4）
 
 根据场景情感选择声音，**不用默认单一声音**：
