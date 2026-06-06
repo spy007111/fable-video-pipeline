@@ -43,6 +43,8 @@ bash scripts/run_pipeline.sh <故事名> examples/voiceover_script.json
 
 ### 晏子使楚（已验证）
 
+<video src="https://github.com/spy007111/fable-video-pipeline/raw/main/examples/output/yanzi_shi_chu_final_v4.mp4" controls width="100%"></video>
+
 | 项目 | 详情 |
 |------|------|
 | 成品 | `yanzi_shi_chu_final_v4.mp4` |
@@ -57,6 +59,8 @@ bash scripts/run_pipeline.sh <故事名> examples/voiceover_script.json
 
 ### 滥竽充数（已验证）
 
+<video src="https://github.com/spy007111/fable-video-pipeline/raw/main/examples/output/lan-yu-chong-shu_final_v4.mp4" controls width="100%"></video>
+
 | 项目 | 详情 |
 |------|------|
 | 成品 | `lan-yu-chong-shu_final_v4.mp4` |
@@ -70,6 +74,8 @@ bash scripts/run_pipeline.sh <故事名> examples/voiceover_script.json
 验证结论：命名格式一致，单场景序列稳定；证明同一 pipeline 对多角色画面也能标准产出。
 
 ### 疑心生鬼 v8（已验证）
+
+<video src="https://github.com/spy007111/fable-video-pipeline/raw/main/examples/output/yi-xin-sheng-gui_final_v8.mp4" controls width="100%"></video>
 
 | 项目 | 详情 |
 |------|------|
