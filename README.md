@@ -62,7 +62,7 @@ bash scripts/run_pipeline.sh <故事名> examples/voiceover_script.json
 | 状态 | ✅ 单角色场景 |
 | 验证结论 | 基础流程稳定，TTS 发音偏差为 Edge-TTS 固有局限 |
 
-### 蓝鱼冲书（已验证）
+### 滥竽充数（已验证）
 
 | 项目 | 详情 |
 |------|------|
