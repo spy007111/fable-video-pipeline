@@ -53,12 +53,12 @@ https://spy007111.github.io/fable-video-pipeline/
 
 ---
 
-| 晏子使楚 | 滥竽充数 | 疑心生鬼 |
-|:---:|:---:|:---:|
-| <a href="https://spy007111.github.io/fable-video-pipeline/"><img src="https://spy007111.github.io/fable-video-pipeline/yanzi_shi_chu_thumb.jpg" width="360" style="border-radius:10px; transition: transform .2s; border:1px solid #333;"></a> | <a href="https://spy007111.github.io/fable-video-pipeline/"><img src="https://spy007111.github.io/fable-video-pipeline/lan-yu-chong-shu_thumb.jpg" width="360" style="border-radius:10px; transition: transform .2s; border:1px solid #333;"></a> | <a href="https://spy007111.github.io/fable-video-pipeline/"><img src="https://spy007111.github.io/fable-video-pipeline/yi-xin-sheng-gui_thumb.jpg" width="360" style="border-radius:10px; transition: transform .2s; border:1px solid #333;"></a> |
-| **94s** · 7.2 MB · v4 | **46.3s** · 2.49 MB · v4 | **54.5s** · 2.24 MB · v8 |
-| 24fps · 1920×1080 | 25fps · 1920×1080 | 25fps · 1920×1080 |
-| ASS+drawtext | 多角色稳定 | drawtext 直出 |
+| 晏子使楚 | 滥竽充数 | 疑心生鬼 | 亡羊补牢 |
+|:---:|:---:|:---:|:---:|
+| <a href="https://spy007111.github.io/fable-video-pipeline/"><img src="https://spy007111.github.io/fable-video-pipeline/yanzi_shi_chu_thumb.jpg" width="280" style="border-radius:10px; transition: transform .2s; border:1px solid #333;"></a> | <a href="https://spy007111.github.io/fable-video-pipeline/"><img src="https://spy007111.github.io/fable-video-pipeline/lan-yu-chong-shu_thumb.jpg" width="280" style="border-radius:10px; transition: transform .2s; border:1px solid #333;"></a> | <a href="https://spy007111.github.io/fable-video-pipeline/"><img src="https://spy007111.github.io/fable-video-pipeline/yi-xin-sheng-gui_thumb.jpg" width="280" style="border-radius:10px; transition: transform .2s; border:1px solid #333;"></a> | <a href="https://spy007111.github.io/fable-video-pipeline/"><img src="https://spy007111.github.io/fable-video-pipeline/wang-yang-bu-lao_thumb.jpg" width="280" style="border-radius:10px; transition: transform .2s; border:1px solid #333;"></a> |
+| **94s** · 7.2 MB · v4 | **46.3s** · 2.49 MB · v4 | **54.5s** · 2.24 MB · v8 | **54.6s** · 2.96 MB · v1 |
+| 24fps · 1920×1080 | 25fps · 1920×1080 | 25fps · 1920×1080 | 25fps · 1920×1080 |
+| ASS+drawtext | 多角色稳定 | drawtext 直出 | drawtext 直出 |
 
 > 💡 **点击缩略图 → 进入演示页 → 点击播放按钮直接观看，无需下载**
 
