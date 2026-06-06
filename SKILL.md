@@ -411,7 +411,18 @@ en = "He regretted not listening..."   # 重新措辞，配音读的是另一句
 
 | 问题 | 原因 | 解决方案 |
 |------|------|----------|
-| **标题卡主题不匹配** | 纯色背景或无关图片 | 标题卡用 `scene_01.png` 做背景 + 叠加中英文大标题 |
+| **标题卡滤镜链顺序** | `format=auto`（崩溃） | `scale→pad→format=yuv420p→eq`（固定顺序，eq 必须在 format 之后） |
+
+`format=auto` 在 `drawtext` 前会导致 `Invalid pixel format 'auto'` 崩溃。正确的滤镜链：
+
+```python
+vf = (
+    "scale=1920:1080:force_original_aspect_ratio=decrease,"
+    "pad=1920:1080:(ow-iw)/2:(oh-ih)/2,"
+    "format=yuv420p,eq=saturation=0.3:brightness=-0.15,"   # ← format=yuv420p 在前，eq 在后
+    f"drawtext=text='{cn_esc}':..."
+)
+```
 | **音频与字幕不一致** | 字幕用了手动改写版本 | 字幕严格使用 `voiceover_script` 英文原文 + `story_script` 的 `narration_cn` |
 | **字幕显示为空白** | `didn't` 等撇号导致 filtergraph 静默失败 | 用 `subprocess` 列表传参，`replace("'", "\\'")` 转义单引号 |
 | **片段时长不对** | 用估算值而非实测值 | 每片段 `-t` = `ffprobe -i audio_xxx.mp3 -show_entries format=duration -v quiet -of csv=p=0` |
@@ -445,7 +456,42 @@ en = "He regretted not listening..."   # 重新措辞，配音读的是另一句
 |------|-----|
 | 分辨率 | 1920×1080（16:9） |
 | 图片尺寸 | **2752x1536**（SenseNova 2K） |
-| 配音 | Edge-TTS en-US-GuyNeural |
+| 配音 | Edge-TTS en-US-GuyNeural（默认）|
+
+## 配音声音选择指南（v4）
+
+根据场景情感选择声音，**不用默认单一声音**：
+
+| 声音 | 适用场景 | 情感特点 |
+|------|----------|----------|
+| `en-US-GuyNeural` | 叙事、常规场景（默认） | 沉稳、正式、叙事感 |
+| `en-US-AndrewNeural` | 恍然大悟、温情时刻、灵机一动 | 温暖、有感染力 |
+| `en-US-JennyNeural` | 感叹、轻松、哲理感悟 | 友好、有共鸣 |
+| `en-GB-RyanNeural` | 道德总结、权威结语 | 英式权威、庄重 |
+| `en-US-AriaNeural` | 紧张、戏剧性、冲突 | 自信、有表现力 |
+| `en-US-MichelleNeural` | 反思、内省、柔和场景 | 温和、柔软 |
+
+**选择原则**：
+- 旁白叙事 → `GuyNeural`
+- 角色对话/感叹 → `JennyNeural` / `AndrewNeural`
+- 道德总结 → `RyanNeural`
+- 戏剧性/紧张 → `AriaNeural`
+
+**在 `voiceover_script.json` 中指定**：
+```json
+[
+  {
+    "id": "scene_03",
+    "text": "Gongming Yi thought for a moment...",
+    "voice": "en-US-AndrewNeural"
+  },
+  {
+    "id": "moral",
+    "text": "Moral: Speak and act according to your audience.",
+    "voice": "en-GB-RyanNeural"
+  }
+]
+```
 | 中文字幕 | `0xFFFF00` 亮黄，fontsize=42，borderw=2 |
 | 英文字幕 | `0xFFFFFF` 纯白，fontsize=30，borderw=1 |
 | 字幕位置 | 中文 `y=h-115`，英文 `y=h-70` |
