@@ -6,7 +6,7 @@
 
 ## YouTube 频道
 
-📺 **一千零二夜** (@1002nights)：https://www.youtube.com/@1002nights
+📺 **aimorningread**：https://www.youtube.com/@aimorningread
 
 每晚一个寓言双语讲述，20:30 更新。
 
