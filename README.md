@@ -39,20 +39,22 @@ bash scripts/run_pipeline.sh <故事名> examples/voiceover_script.json
 
 ## 成功案例（直接播放）
 
-### 横屏 16:9
+👉 **点击任意缩略图进入演示页，在线播放所有视频：**
+
+https://spy007111.github.io/fable-video-pipeline/
+
+---
 
 | 晏子使楚 | 滥竽充数 | 疑心生鬼 |
 |:---:|:---:|:---:|
-| <video src="https://spy007111.github.io/fable-video-pipeline/yanzi_shi_chu_final_v4.mp4" style="width:100%;border-radius:8px;"></video> | <video src="https://spy007111.github.io/fable-video-pipeline/lan-yu-chong-shu_final_v4.mp4" style="width:100%;border-radius:8px;"></video> | <video src="https://spy007111.github.io/fable-video-pipeline/yi-xin-sheng-gui_final_v8.mp4" style="width:100%;border-radius:8px;"></video> |
-| 94s · 7.2 MB · v4 | 46.3s · 2.49 MB · v4 | 54.5s · 2.24 MB · v8 |
+| <a href="https://spy007111.github.io/fable-video-pipeline/"><img src="https://spy007111.github.io/fable-video-pipeline/yanzi_shi_chu_thumb.jpg" width="360" style="border-radius:10px; transition: transform .2s; border:1px solid #333;"></a> | <a href="https://spy007111.github.io/fable-video-pipeline/"><img src="https://spy007111.github.io/fable-video-pipeline/lan-yu-chong-shu_thumb.jpg" width="360" style="border-radius:10px; transition: transform .2s; border:1px solid #333;"></a> | <a href="https://spy007111.github.io/fable-video-pipeline/"><img src="https://spy007111.github.io/fable-video-pipeline/yi-xin-sheng-gui_thumb.jpg" width="360" style="border-radius:10px; transition: transform .2s; border:1px solid #333;"></a> |
+| **94s** · 7.2 MB · v4 | **46.3s** · 2.49 MB · v4 | **54.5s** · 2.24 MB · v8 |
+| 24fps · 1920×1080 | 25fps · 1920×1080 | 25fps · 1920×1080 |
+| ASS+drawtext | 多角色稳定 | drawtext 直出 |
 
-> ⚠️ 如视频未显示，请访问 👉 **在线演示页**：https://spy007111.github.io/fable-video-pipeline/
+> 💡 **点击缩略图 → 进入演示页 → 点击播放按钮直接观看，无需下载**
 
-### 缩略图预览
-
-| 晏子使楚 | 滥竽充数 | 疑心生鬼 |
-|:---:|:---:|:---:|
-| <img src="https://spy007111.github.io/fable-video-pipeline/yanzi_shi_chu_thumb.jpg" width="360" style="border-radius:8px;"> | <img src="https://spy007111.github.io/fable-video-pipeline/lan-yu-chong-shu_thumb.jpg" width="360" style="border-radius:8px;"> | <img src="https://spy007111.github.io/fable-video-pipeline/yi-xin-sheng-gui_thumb.jpg" width="360" style="border-radius:8px;"> |
+---
 
 ## 项目结构
 
@@ -62,11 +64,17 @@ fable-video-pipeline/
 ├── PIPELINE.md
 ├── LICENSE
 ├── .env.example
-├── docs/                  ← 在线演示页（含视频）
+├── docs/                  ← 在线演示页（含视频，可直接播放）
 ├── examples/
 │   └── output/           ← 视频成品
 └── scripts/
+    ├── run_pipeline.sh
+    └── 03-06_*.py         ← 各阶段处理脚本
 ```
+
+## 贡献
+
+欢迎提交 PR。建议：从较简单寓言开始，验证故事脚本格式后再挑战多角色场景。
 
 ## 许可证
 
