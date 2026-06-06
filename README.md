@@ -2,9 +2,7 @@
 
 自动把中国古代寓言/成语故事制作成高质量双语短视频：**分镜 → AI 绘图 → 英文配音 → 字幕渲染 → 片段合成 → 最终成片**。
 
-项目已产出可播放成片，见下方 [Success Cases](#success-cases)。
-
-## 核心能力
+## 功能特性 🎯
 
 - 输入一段故事文案 + 分镜描述，自动生成 1080p 双语字幕短视频
 - 固定角色描述嵌入每个 prompt，跨镜头保持视觉一致性
@@ -24,7 +22,7 @@
 ## 快速开始
 
 ```bash
-git clone https://github.com/<your-username>/fable-video-pipeline.git
+git clone https://github.com/spy007111/fable-video-pipeline.git
 cd fable-video-pipeline
 cp .env.example .env
 pip install edge-tts requests
@@ -41,63 +39,32 @@ bash scripts/run_pipeline.sh <故事名> examples/voiceover_script.json
 
 ## 成功案例
 
-### 晏子使楚（已验证）
+### 竖屏 9:16
 
-<a href="https://github.com/spy007111/fable-video-pipeline/releases/tag/yanzi-shi-chu-v4">
-  <img src="https://github.com/spy007111/fable-video-pipeline/raw/main/examples/output/thumbnails/yanzi_shi_chu_thumb.jpg" alt="晏子使楚 预览" width="640">
-</a>
+<table>
+<thead>
+<tr>
+<th align="center">▶️ 晏子使楚</th>
+<th align="center">▶️ 滥竽充数</th>
+<th align="center">▶️ 疑心生鬼 v8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><video src="https://media.githubusercontent.com/media/spy007111/fable-video-pipeline/main/examples/output/yanzi_shi_chu_final_v4.mp4" controls="" style="width:100%;max-width:320px;border-radius:8px;"></video></td>
+<td align="center"><video src="https://media.githubusercontent.com/media/spy007111/fable-video-pipeline/main/examples/output/lan-yu-chong-shu_final_v4.mp4" controls="" style="width:100%;max-width:320px;border-radius:8px;"></video></td>
+<td align="center"><video src="https://media.githubusercontent.com/media/spy007111/fable-video-pipeline/main/examples/output/yi-xin-sheng-gui_final_v8.mp4" controls="" style="width:100%;max-width:320px;border-radius:8px;"></video></td>
+</tr>
+</tbody>
+</table>
 
-| 项目 | 详情 |
-|------|------|
-| 成品 | `yanzi_shi_chu_final_v4.mp4` |
-| 路径 | `/root/fable-output/yanzi_shi_chu/yanzi_shi_chu_final_v4.mp4` |
-| 分辨率 | 1920×1080 (16:9) |
-| 时长 | 94s |
-| 大小 | 7.2 MB |
-| 帧率 | 24fps |
-| 状态 | 可正常播放 |
-
-验证结论：ASS 字幕按实测音频时长累加；同一 prompt 嵌入恒定角色描述实现基础一致性；drawtext 直出绕过 ASS filter 兼容性问题；累积误差 < 0.05s。
-
-### 滥竽充数（已验证）
-
-<a href="https://github.com/spy007111/fable-video-pipeline/releases/tag/lan-yu-chong-shu-v4">
-  <img src="https://github.com/spy007111/fable-video-pipeline/raw/main/examples/output/thumbnails/lan-yu-chong-shu_thumb.jpg" alt="滥竽充数 预览" width="640">
-</a>
-
-| 项目 | 详情 |
-|------|------|
-| 成品 | `lan-yu-chong-shu_final_v4.mp4` |
-| 路径 | `/root/fable-output/lan-yu-chong-shu_final_v4/lan-yu-chong-shu_final_v4.mp4` |
-| 分辨率 | 1920×1080 (16:9) |
-| 时长 | 46.3s |
-| 大小 | 2.49 MB |
-| 帧率 | 25fps |
-| 状态 | 可正常播放 |
-
-验证结论：命名格式一致，单场景序列稳定；证明同一 pipeline 对多角色画面也能标准产出。
-
-### 疑心生鬼 v8（已验证）
-
-<a href="https://github.com/spy007111/fable-video-pipeline/releases/tag/yi-xin-sheng-gui-v8">
-  <img src="https://github.com/spy007111/fable-video-pipeline/raw/main/examples/output/thumbnails/yi-xin-sheng-gui_thumb.jpg" alt="疑心生鬼 预览" width="640">
-</a>
-
-| 项目 | 详情 |
-|------|------|
-| 成品 | `yi-xin-sheng-gui_final_v8.mp4` |
-| 路径 | `/root/fable-output/yi-xin-sheng-gui_final_v8/yi-xin-sheng-gui_final_v8.mp4` |
-| 分辨率 | 1920×1080 (16:9) |
-| 时长 | 54.5s |
-| 大小 | 2.24 MB |
-| 帧率 | 25fps |
-| 状态 | 可正常播放 |
-
-验证结论：版本迭代至 v8 仍可稳定流水线产出；未使用 ASS filter，改用 drawtext 直出，字幕时间轴按实际音频时长累加。
-
-## 贡献
-
-欢迎提交 PR。建议：从较简单寓言开始，验证故事脚本格式后再挑战多角色场景。
+| 项目 | 晏子使楚 | 滥竽充数 | 疑心生鬼 v8 |
+|------|---------|---------|-------------|
+| 时长 | 94s | 46.3s | 54.5s |
+| 分辨率 | 1920×1080 | 1920×1080 | 1920×1080 |
+| 大小 | 7.2 MB | 2.49 MB | 2.24 MB |
+| 帧率 | 24fps | 25fps | 25fps |
+| 状态 | ✅ 可正常播放 | ✅ 可正常播放 | ✅ 可正常播放 |
 
 ## 项目结构
 
@@ -109,7 +76,7 @@ fable-video-pipeline/
 ├── .env.example
 ├── examples/
 │   ├── voiceover_script.json
-│   └── CHARACTERS.md
+│   └── output/           ← 视频成品
 ├── scripts/
 │   ├── run_pipeline.sh
 │   ├── 03_generate_image.py
@@ -123,9 +90,15 @@ fable-video-pipeline/
     └── ...
 ```
 
+## 在线演示
+
+如需更好的播放体验，可访问 **GitHub Pages 演示页**：
+
+https://spy007111.github.io/fable-video-pipeline/
+
 ## 贡献
 
-Issue 和 PR 都欢迎。
+欢迎提交 PR。建议：从较简单寓言开始，验证故事脚本格式后再挑战多角色场景。
 
 ## 许可证
 
