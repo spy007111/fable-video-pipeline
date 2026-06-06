@@ -55,13 +55,6 @@ bash scripts/run_pipeline.sh <故事名> examples/voiceover_script.json
 
 验证结论：ASS 字幕按实测音频时长累加；同一 prompt 嵌入恒定角色描述实现基础一致性；drawtext 直出绕过 ASS filter 兼容性问题；累积误差 < 0.05s。
 
-### 高山流水（已验证）
-
-| 项目 | 详情 |
-|------|------|
-| 状态 | ✅ 单角色场景 |
-| 验证结论 | 基础流程稳定，TTS 发音偏差为 Edge-TTS 固有局限 |
-
 ### 滥竽充数（已验证）
 
 | 项目 | 详情 |
