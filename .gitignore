@@ -1,6 +1,7 @@
 # Build & output artifacts
 build/
 dist/
+# Note: examples/output/*.mp4 are tracked via Git LFS (see .gitattributes)
 *.mp4
 *.mp3
 *.png
