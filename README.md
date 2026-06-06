@@ -78,6 +78,61 @@ fable-video-pipeline/
 
 欢迎提交 PR。建议：从较简单寓言开始，验证故事脚本格式后再挑战多角色场景。
 
+## 如何使用本 Skill
+
+本项目包含一个完整的 Hermes Agent skill，可以复用到你自己的 Hermes 环境中。
+
+### 目录结构
+
+```
+fable-video-pipeline/
+├── SKILL.md              ← Skill 定义文件
+├── scripts/              ← 流水线脚本
+├── references/           ← 技术文档与经验总结
+└── templates/            ← 分镜模板
+```
+
+### 安装方式（任选其一）
+
+**方式 A：复制到本地 skills 目录（推荐）**
+
+```bash
+# 克隆仓库
+git clone https://github.com/spy007111/fable-video-pipeline.git
+cd fable-video-pipeline
+
+# 复制到 Hermes skills 目录
+cp -r SKILL.md ~/.hermes/skills/video-production/fable-video-pipeline/
+cp -r scripts/ ~/.hermes/skills/video-production/fable-video-pipeline/
+cp -r references/ ~/.hermes/skills/video-production/fable-video-pipeline/
+cp -r templates/ ~/.hermes/skills/video-production/fable-video-pipeline/
+```
+
+**方式 B：通过 HermeTalk 安装（待上线）**
+
+等待发布到 ClawHub 后，可用以下命令安装：
+
+```bash
+curl -sL "<download-url>" -o /tmp/fable-video-pipeline.zip
+unzip -o /tmp/fable-video-pipeline.zip -d ~/.hermes/skills/video-production/
+```
+
+### 触发方式
+
+在 Hermes Agent 中直接说：
+
+- `帮我制作一个寓言视频`
+- `用 fable-video-pipeline 生成视频`
+- `寓言故事视频制作`
+
+### 依赖
+
+- Python 3 + `edge-tts`、`requests`
+- FFmpeg（合成视频用）
+- SenseNova API Key（绘图用，可替换为 GPT-Image-2 提升画质）
+
+---
+
 ## 许可证
 
 MIT
